@@ -1,2 +1,2 @@
 # Shop
-Shop application written in PHP/OOP + TDD
+Shop application written in PHP + TDD
