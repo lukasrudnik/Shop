@@ -47,14 +47,14 @@ class Product
         return $this -> description;
     }
 
-    function getInStock()
+    function getIn_stock()
     {
-        return $this -> inStock;
+        return $this -> in_stock;
     }
 
-    function getcategoryId()
+    function getCategory_id()
     {
-        return $this -> productId;
+        return $this -> category_id;
     }
 
     function setName($name)
@@ -77,20 +77,22 @@ class Product
         $this -> description = $description;
     }
 
-    function setIn_stock($inStock)
+    function setIn_stock($in_stock)
     {
-        $this -> inStock = $inStock;
+        $this -> in_stock = $in_stock;
     }
 
-    function setCategory_id($categoryId)
+    function setCategory_id($category_id)
     {
-        $this -> categoryId = $categoryId;
+        $this -> category_id = $category_id;
     }
 
+    // zapisywanie do DB
     public function saveToDB()
     {
-        $sql = sprintf("INSERT INTO Products (`name`, `price`, `amount`, `description`, `inStock`, `category_id`)
-                              VALUES ('%s', '%s', '%s', '%s', '%s', '%s');", 
+        $sql = sprintf("INSERT INTO Products (`name`, `price`, `amount`, `description`, `in_stock`,
+                `category_id`)
+                VALUES ('%s', '%s', '%s', '%s', '%s', '%s');", 
                 $this -> getName(), 
                 $this -> getPrice(), 
                 $this -> getAmount(), 
@@ -99,6 +101,7 @@ class Product
                 $this -> getCategory_id());
     }
 
+    // usuwane z DB
     public function deleteFromDB()
     {
         $sql = "DELETE FROM Products WHERE id = $id";
@@ -116,7 +119,7 @@ class Product
 
         $result = $connection -> query($sql);
 
-        if ($result -> num_rows == 1) {
+        if($result -> num_rows == 1) {
             $row = $result -> fetch_assoc();
 
             $product                = new Product();
@@ -125,13 +128,14 @@ class Product
             $product -> price       = $row['price'];
             $product -> amount      = $row['amount'];
             $product -> description = $row['description'];
-            $product -> inStock     = $row['inStock'];
-            $product -> categoryId  = $row['categoryId'];
+            $product -> in_stock     = $row['in_stock'];
+            $product -> category_id  = $row['category_id'];
 
             $product -> path          = $row['path']; // tabela Images
             $product -> category_name = $row['category_name']; // tabela Categories
             return $product;
-        } else {
+        }
+        else{
             return false;
         }
     }
@@ -146,7 +150,7 @@ class Product
         $result       = $connection -> query($sql);
         $productTable = [];
 
-        if ($result == true && $result -> num_rows > 0) {
+        if($result == true && $result -> num_rows > 0) {
             foreach ($result as $row) {
 
                 $product                = new Product();
@@ -155,8 +159,8 @@ class Product
                 $product -> price       = $row['price'];
                 $product -> amount      = $row['amount'];
                 $product -> description = $row['description'];
-                $product -> inStock     = $row['inStock'];
-                $product -> categoryId  = $row['categoryId'];
+                $product -> in_stock     = $row['in_stock'];
+                $product -> category_id  = $row['category_id'];
 
                 $product -> path          = $row['path']; // tabela Images
                 $product -> category_name = $row['category_name']; // tabela Categories
@@ -176,7 +180,7 @@ class Product
         $result       = $conn -> query($sql);
         $productTable = [];
 
-        if ($result == true && $result -> num_rows > 0) {
+        if($result == true && $result -> num_rows > 0){
             foreach ($result as $row) {
 
                 $product                = new Product();
@@ -185,8 +189,8 @@ class Product
                 $product -> price       = $row['price'];
                 $product -> amount      = $row['amount'];
                 $product -> description = $row['description'];
-                $product -> inStock     = $row['inStock'];
-                $product -> categoryId  = $row['categoryId'];
+                $product -> in_stock     = $row['in_stock'];
+                $product -> category_id  = $row['category_id'];
 
                 $product -> path          = $row['path']; // tabela Images
                 $product -> category_name = $row['category_name']; // tabela Categories
