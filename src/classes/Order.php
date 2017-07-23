@@ -1,6 +1,6 @@
 <?php
 
-class Category
+class Order
 {
     
 }
