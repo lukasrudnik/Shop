@@ -99,6 +99,11 @@ class Product
                 $this -> getDescription(), 
                 $this -> getIn_stock(), 
                 $this -> getCategory_id());
+        $result = $connection->query($sql);
+        if ($result == true) {
+            return true;
+        }
+        return false;
     }
 
     // usuwane z DB
