@@ -117,15 +117,15 @@
 				<p>Please register to continue shopping</p><br>
 				<p>
 				<a class="btn btn-success" href="login.php">Login</a>
-				<input class="btn btn-warning" type="submit" value="Register new User!">
-                       <!--<a class="btn btn-primary btn-large" href="#">Learn more about our Shop</a>-->
+                <a class="btn btn-warning" href="register.php">Register new User!</a>
                 </p>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-4">
-			<h2>Our fresh Fruits </h2>
+			<h2 style="color:#0F0F0F">Best price</h2>
+			
 			<p>
 
 			</p>
@@ -134,7 +134,7 @@
 			</p>
 		</div>
 		<div class="col-md-4">
-			<h2>Our fresh Vegetables</h2>
+			<h2 style="color:#0F0F0F">Daily delivery</h2>
 			<p>
 
 			<p>
@@ -142,9 +142,7 @@
 			</p>
 		</div>
 		<div class="col-md-4">
-			<h2>
-				Guarantee of quality
-			</h2>
+			<h2 style="color:#0F0F0F">Guarantee of quality</h2>
 			<p>
 
 			</p>
@@ -152,7 +150,7 @@
 				<a class="btn" href="#">View details »</a>
 			</p>
 		</div>
-	</div>
+    </div>
 </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
