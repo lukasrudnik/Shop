@@ -8,7 +8,6 @@
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
     <div class="container-fluid">
@@ -16,27 +15,27 @@
 		<div class="col-md-12">
 			<nav class="navbar navbar-inverse" role="navigation">	
                  <div class="navbar-header"> 
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-					</button> <a class="navbar-brand" href="#">Home</a>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" 
+                            data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+					</button><a class="navbar-brand" href="#">Home</a>
 				</div>	
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="cities">
-							<a href="#"> Fresch Fruits</a>
+							<a href="fruitsList.php"> Fresch Fruits</a>
 						</li>
 						<li class="cities">
-							<a href="#"> Fresch Vegetables</a>
+							<a href="vegetablesList.php"> Fresch Vegetables</a>
 						</li>
 						<li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							     Drop down to see more products<strong class="caret"></strong></a>
+							    More categories <strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
 								<li>
-                                    <a href="#">More products coming soon!</a>
+                                    <a href="#">More products coming soon</a>
 								</li>			
-								<li class="divider">
-								</li>
+								<li class="divider"></li>
 								<li>
 									<a href="#">More products coming soon</a>
 								</li>
@@ -50,8 +49,21 @@
 						<button type="submit" class="btn btn-default">Search</button>
 					</form>
 					<ul class="nav navbar-nav navbar-right">
+                         <li class="dropdown">
+                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Panels
+                                <strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+                                    <a href=adminPage.php>Admin Panel</a>
+								</li>			
+								<li class="divider"></li>
+								<li>
+									<a href="userPage.php">Clients Panel</a>
+								</li>
+							</ul>
+						</li>
 						<li>
-							<a href="#">Contact Us</a>
+							<a href="contactPage.php">Contact Us</a>
 						</li>
 					</ul>
 				</div>		
@@ -114,10 +126,10 @@
 				<br>
 				<h2>We warmly welcome you in our Healthy Food Store! ;)</h2>
 				<br>
-				<p>Please register to continue shopping</p><br>
+				<p>Please register at the Shop or login to continue shopping</p><br>
 				<p>
 				<a class="btn btn-success" href="login.php">Login</a>
-                <a class="btn btn-warning" href="register.php">Register new User!</a>
+                <a class="btn btn-warning" href="register.php">Register new Cliet</a>
                 </p>
 			</div>
 		</div>
@@ -125,30 +137,27 @@
 	<div class="row">
 		<div class="col-md-4">
 			<h2 style="color:#0F0F0F">Best price</h2>
-			
-			<p>
-
-			</p>
+<!--
 			<p>
 				<a class="btn" href="#">View details »</a>
 			</p>
+-->
 		</div>
 		<div class="col-md-4">
 			<h2 style="color:#0F0F0F">Daily delivery</h2>
-			<p>
-
+<!--
 			<p>
 				<a class="btn" href="#">View details »</a>
 			</p>
+-->
 		</div>
 		<div class="col-md-4">
 			<h2 style="color:#0F0F0F">Guarantee of quality</h2>
-			<p>
-
-			</p>
+<!--
 			<p>
 				<a class="btn" href="#">View details »</a>
 			</p>
+-->
 		</div>
     </div>
 </div>
