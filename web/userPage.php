@@ -22,42 +22,43 @@ $loggedUser = User::loadUserById($connect, $userSession);
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header navbar-left">
+    <div class="col-md-12">
+        <nav class="navbar navbar-inverse" role="navigation">	
+            <div class="navbar-header"> 
                 <a class="navbar-brand">Hello,
-                <?php
-                    echo $loggedUser->getName() . " "; 
-                    echo $loggedUser->getSurname() . "! ;)"; 
-                ?> <!-- powitanie zalogowanego użytkownika -->
-                </a> 
-                <ul>     
-                    <a href="index.php">
                     <?php
-                        echo "Shop page";
-                    ?> <!-- przekierowanie na stronę główną --> 
-                    </a>                    
-                    <br>
-                    <?php
-                        // przekierowanie na stronę zmiany danych użytkwnika
-                         if(isset($_SESSION['userId'])){              
-                             echo "<a href='settings.php'>Settings page</a> <br>";
-                         }
-                        
-                        if(isset($_SESSION['userId'])){
-                            echo "<a href='logout.php'>Logout</a>";
-                        } 
-                    ?> <!-- Wylogowanie zalogowanego użytkownika -->   
-                </ul> 
+                        echo $loggedUser->getName() . " "; 
+                        echo $loggedUser->getSurname(); 
+                    ?> <!-- powitanie zalogowanego użytkownika -->
+                </a>
+                <a class="navbar-brand" href="index.php">Click to run to Shop page</a>
             </div>
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right">
+                  <li>
+                    <?php
+                       // przekierowanie na stronę zmiany danych użytkwnika
+                        if(isset($_SESSION['userId'])){              
+                            echo ("<a class=\"dropdown-toggle\" href=\"settings.php\">Settings</a>");
+                        }
+                    ?>
+                    </li>
+                    <li>
+                    <?php
+                        // wylogowanie zalogowanego użytkownika	
+                        if(isset($_SESSION['userId'])){
+                                echo ("<a class=\"dropdown-toggle\" href=\"logout.php\">Logout</a>");
+                        }             
+                    ?>
+                   </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="jumbotron">
+              
+                        
+              
         </div>
-    </nav>
-    <div class="container">
-    <div class="jumbotron">  
-    
-dokończe jutro
-   
     </div>
-    </div>
- </body>
+</body>
 </html>
