@@ -67,97 +67,99 @@
                                 </li>
                             </ul>
                         </div>		
-                    </nav>		
+                    </nav>
                     <div class="jumbotron">
-                        <div id="carousel-example-generic2" class="carousel slide">
+                        <center>
+                            <div id="carousel-example-generic2" class="carousel slide">
 
-                            <!-- Wskaźniki w postaci kropek -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic2" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic2" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic2" data-slide-to="2"></li>
-                            </ol>
+                                <!-- Wskaźniki w postaci kropek -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic2" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic2" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic2" data-slide-to="2"></li>
+                                </ol>
 
-                            <!-- Slajdy -->
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img src="../images/ima1.jpg" alt="">
+                                <!-- Slajdy -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="../images/ima1.jpg" alt="">
 
-                                    <!-- Opis slajdu -->
-                                    <div class="carousel-caption">
-                                        <!--
-                                        <h3>To jest opis</h3>
-                                        <p>pierwszego slajdu</p>
-                                        -->
+                                        <!-- Opis slajdu -->
+                                        <div class="carousel-caption">
+                                            <!--
+                                            <h3>To jest opis</h3>
+                                            <p>pierwszego slajdu</p>
+                                            -->
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <img src="../images/ima2.jpg" alt="">
+
+                                        <!-- Opis slajdu -->
+                                        <div class="carousel-caption">
+                                            <!--
+                                            <h3>To jest opis</h3>
+                                            <p>drugiego slajdu</p>
+                                            -->
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <img src="../images/ima3.jpg" alt="">
+
+                                        <!-- Opis slajdu -->
+                                        <div class="carousel-caption">
+                                            <!--
+                                            <h3>To jest opis</h3>
+                                            <p>trzeciego slajdu</p>
+                                            -->
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <img src="../images/ima2.jpg" alt="">
 
-                                    <!-- Opis slajdu -->
-                                    <div class="carousel-caption">
-                                        <!--
-                                        <h3>To jest opis</h3>
-                                        <p>drugiego slajdu</p>
-                                        -->
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="../images/ima3.jpg" alt="">
-
-                                    <!-- Opis slajdu -->
-                                    <div class="carousel-caption">
-                                        <!--
-                                        <h3>To jest opis</h3>
-                                        <p>trzeciego slajdu</p>
-                                        -->
-                                    </div>
-                                </div>
+                                <!-- Strzałki do przewijania -->
+                                <a class="left carousel-control" href="#carousel-example-generic2" data-slide="prev">
+                                    <span class="icon-prev"></span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-example-generic2" data-slide="next">
+                                    <span class="icon-next"></span>
+                                </a>
                             </div>
-
-                            <!-- Strzałki do przewijania -->
-                            <a class="left carousel-control" href="#carousel-example-generic2" data-slide="prev">
-                                <span class="icon-prev"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic2" data-slide="next">
-                                <span class="icon-next"></span>
-                            </a>
-                        </div>				
+                        </center>
                         <br>
-                        <h2>We warmly welcome you in our Healthy Food Store! ;)</h2>
-                        <br>
-                        <p>Please register at the Shop or login to continue shopping</p><br>
-                        <p>
-                            <a class="btn btn-success" href="login.php">Login</a>
-                            <a class="btn btn-warning" href="register.php">Register new Cliet</a>
-                        </p>
+                        <center>
+                            <h2>We warmly welcome you in our Healthy Food Store! ;)</h2>
+                            <br>
+                            <p>Please register at the Shop or login to continue shopping</p><br>
+                            <p>
+                                <a class="btn btn-success" href="login.php">Login</a>
+                                <a class="btn btn-warning" href="register.php">Register new Cliet</a>
+                            </p>
+                        </center>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <h2 style="color:#0F0F0F">Best price</h2>
-                    <!--
-                                            <p>
-                                                    <a class="btn" href="#">View details »</a>
-                                            </p>
-                    -->
-                </div>
-                <div class="col-md-4">
-                    <h2 style="color:#0F0F0F">Daily delivery</h2>
-                    <!--
-                                            <p>
-                                                    <a class="btn" href="#">View details »</a>
-                                            </p>
-                    -->
-                </div>
-                <div class="col-md-4">
-                    <h2 style="color:#0F0F0F">Guarantee of quality</h2>
-                    <!--
-                                            <p>
-                                                    <a class="btn" href="#">View details »</a>
-                                            </p>
-                    -->
+            <div class="container" text-align: justify>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2 style="color:#0F0F0F">Best price</h2>
+                        <p>
+                            <img src="../images/best_price.jpg" alt="Quality Picture" width="50%" height="50%">
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h2 style="color:#0F0F0F">Daily delivery</h2>
+                        <p>
+                            <img src="../images/delivery.jpg" alt="Quality Picture" width="50%" height="50%">
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h2 style="color:#0F0F0F">Guarantee of quality</h2>
+
+                        <p>
+                            <img src="../images/Quality.jpg" alt="Quality Picture" width="50%" height="50%">
+                        </p>
+
+                    </div>
                 </div>
             </div>
         </div>
