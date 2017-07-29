@@ -22,13 +22,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(!empty($_POST['email']) . $connect->real_escape_string($_POST['email']) && 
            !empty($_POST['password']) . $connect->real_escape_string($_POST['password'])){ 
       
-            // zmiana dnych użytkownka  
-            $user->save($connect);
+            // zmiana dnych użytkownka 
             $user->setName(trim($_POST['name']));
             $user->setSurname(trim($_POST['surname']));
             $user->setEmail(trim($_POST['email']));
             $user->setAddress(trim($_POST['address']));
             $user->setPassword(trim($_POST['password']));
+            $user->save($connect);
+            
             
             echo 'Data corrected correctly! Your new username is: ' . $_POST['name'] . '<br>';
         }
