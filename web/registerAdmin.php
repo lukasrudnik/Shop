@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(isset($_POST['email']) && strlen(trim($_POST['email'])) >= 3
         && isset($_POST['password']) && strlen(trim($_POST['password'])) >= 3 
         && isset($_POST['repeadPassword']) 
-        && trim($_POST['repeadPassword']) === trim($_POST['password'])) {
+        && strlen(trim($_POST['repeadPassword']) === trim($_POST['password']))) {
         //Powtórzenie hasła do rejestracji
 
         if (!empty($_POST['email']) . $connect -> real_escape_string($_POST['email']) &&
@@ -21,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $message = '<script language="javascript"> alert("New admin has been successfully registered") </script>';
                 echo $message;
             } else {
-                $message = '<script language="javascript"> alert("Error while creating new user") </script>';
-                echo $message;
+                $message = '<script language="javascript"> alert("Error while creating new admin") </script>';
+                echo $message . $connect -> connect_error;
             }
         } else {
             echo ("Incorrect data in form, validate and try again!");
