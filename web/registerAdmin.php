@@ -20,6 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($admin -> save($connect)) {
                 $message = '<script language="javascript"> alert("New admin has been successfully registered") </script>';
                 echo $message;
+<<<<<<< HEAD
+=======
+            } else {
+                $message = '<script language="javascript"> alert("Error while creating new admin") </script>';
+                echo $message . $connect -> connect_error;
+>>>>>>> 0f3c6ea4072ed92ca91b27c8a56252a488c486f0
             }
             else {
                 $message = '<script language="javascript"> alert("Error while creating new admin") </script>';
