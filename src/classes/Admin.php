@@ -33,7 +33,7 @@ class Admin{
     function setPassword($password){
         $optionSalt = ['cost'=>11]; 
         
-        if(is_string($password) && strlen(trim($password)) >=6 ){
+        if(is_string($password) && strlen(trim($password)) >= 3){
             $newPassword = password_hash($password, PASSWORD_BCRYPT, $optionSalt);
             $this->password = $newPassword;
         }
