@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $message = '<script language="javascript"> alert("New admin has been successfully registered") </script>';
                 echo $message;
             } else {
-                $message = '<script language="javascript"> alert("Error while creating new user") </script>';
+                $message = '<script language="javascript"> alert("Error while creating new Admin") </script>';
                 echo $message;
             }
         } else {
