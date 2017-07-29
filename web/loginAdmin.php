@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'
        && !empty($_POST['password']) . $connect->real_escape_string($password)){        
        // usuwanie znaków specjalnych jeśli hasło i email nie są puste
         
-        $sql = "SELECT * FROM Users WHERE email = '$email'"; 
+        $sql = "SELECT * FROM Admins WHERE email = '$email'"; 
         $query = $connect->query($sql);
         // połączenie do email w tabeli Users
     
@@ -32,13 +32,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'
             $row = $query->fetch_assoc();  
              
             // sprawdzenie podanego w formularzu hasła z hasłem zapisanym w bazie danych
-            $clientPassword = $row['password'];
-            $checkPassword = password_verify($password, $clientPassword);
+            $adminPassword = $row['password'];
+            $checkPassword = password_verify($password, $adminPassword);
             
             // ustawienie sesji i przekierowanie na stronę klienta        
             if($checkPassword){
-                $_SESSION['userId'] = $row['id'];
-                header('Location: userPage.php');         
+                $_SESSION['adminId'] = $row['id'];
+                header('Location: adminPage.php');         
             }
             else{
                 echo ("Wrong e-mail or password, please check password and try again! <br>");
@@ -61,18 +61,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'
     <form method="POST">
         <div class="container">
             <div class="jumbotron">
-                <h2>Please login to store to continue shopping</h2><br>
+                <h2>Administrator login:</h2><br>
             <div class="form-group">
-               <label for="E-mail">E-mail:</label>
+               <label for="E-mail">Administrator e-mail:</label>
                <input type="email" class="form-control" name="email" placeholder="Your e-mail">
                <br>
-               <label for="Password">Password:</label>
+               <label for="Password">Administrator password:</label>
                <br>
                <input type="password" class="form-control" name="password" placeholder="Your password">   
                <br><br><br>
                <input class="btn btn-success" type="submit" value="Login In">
-               <a class="btn btn-warning" href="register.php" role="button">
-                        Click to move to Register Page</a>
                 <a class="btn btn-primary" href="index.php">Click to move to Main Shop Page</a>
             </div>
             </div>

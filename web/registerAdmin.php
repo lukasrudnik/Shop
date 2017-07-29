@@ -2,10 +2,7 @@
 require_once '../src/initialClass.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['name']) && strlen(trim($_POST['name'])) >= 3 
-        && isset($_POST['surname']) && strlen(trim($_POST['surname'])) >= 3 
-        && isset($_POST['address']) && strlen(trim($_POST['address'])) >= 6 
-        && isset($_POST['email']) && strlen(trim($_POST['email'])) >= 3 
+    if(isset($_POST['email']) && strlen(trim($_POST['email'])) >= 3
         && isset($_POST['password']) && strlen(trim($_POST['password'])) >= 3 
         && isset($_POST['repeadPassword']) 
         && trim($_POST['repeadPassword']) === trim($_POST['password'])) {
@@ -16,15 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // usuwanie znaków specjalnych jeśli hasło i email nie są puste
             
             // zapisywanie nowego klienta 
-            $user = new User();
-            $user -> setName(trim($_POST['name']));
-            $user -> setSurname(trim($_POST['surname']));
-            $user -> setEmail(trim($_POST['email']));
-            $user -> setAddress(trim($_POST['address']));
-            $user -> setPassword(trim($_POST['password']));
+            $admin = new Admin();
+            $admin -> setEmail(trim($_POST['email']));
+            $admin -> setPassword(trim($_POST['password']));
 
-            if ($user -> save($connect)) {
-                $message = '<script language="javascript"> alert("New user has been successfully registered") </script>';
+            if ($admin -> save($connect)) {
+                $message = '<script language="javascript"> alert("New admin has been successfully registered") </script>';
                 echo $message;
             } else {
                 $message = '<script language="javascript"> alert("Error while creating new user") </script>';
@@ -48,20 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form method ='POST'>
             <div class="container">
                 <div class="jumbotron">
-                    <h2>Please register at the store to continue shopping</h2><br>
+                    <h2>Register new Administrator!</h2><br>
                     <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" class="form-control" name="name" 
-                               placeholder="min. 3 characters"><br>
-                        <label for="Surname">Surname:</label>
-                        <input type="text" class="form-control" name="surname" 
-                               placeholder="min. 3 characters"><br>
-                        <label for="Address">Full Address:</label>
-                        <input type="text" class="form-control" name="address" 
-                               placeholder="Country, City, Street"><br>
                         <label for="E-mail">E-mail:</label>
                         <input type="email" class="form-control" name="email" 
-                               placeholder="min. 6 characters"><br>
+                               placeholder="administrator e-mail"><br>
                         <label for="Password">Password:</label>
                         <input type="password" class="form-control" name="password"
                                placeholder="***"><br>
@@ -69,10 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="password" class="form-control" name="repeadPassword"                        placeholder="***"><br>
                     </div>
                     <div class="form-group"><br>
-                        <input class="btn btn-success" type="submit" value="Register new Client">
-                        <a class="btn btn-warning" href="login.php">Click to move to Login Page</a>
-                        <a class="btn btn-primary" href="index.php">
-                            Click to move to Main Shop Page</a>
+                        <input class="btn btn-danger" type="submit" value="Register new Administrator">
                     </div>
                 </div>
             </div>

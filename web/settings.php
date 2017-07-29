@@ -3,18 +3,24 @@ session_start();
 
 require_once '../src/initialClass.php';
 
-if (!isset($_SESSION['userId'])) {
+if(!isset($_SESSION['userId'])){
     header('Location: login.php');
 }
 
 $userSession = $_SESSION['userId'];
-$user        = User::loadUserById($connect, $userSession);
+$user = User::loadUserById($connect, $userSession);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['name']) && strlen(trim($_POST['name'])) >= 3 && isset($_POST['surname']) && strlen(trim($_POST['surname'])) >= 3 && isset($_POST['address']) && strlen(trim($_POST['address'])) >= 6 && isset($_POST['email']) && strlen(trim($_POST['email'])) >= 6 && isset($_POST['password']) && strlen(trim($_POST['password'])) >= 6 && isset($_POST['repeatPassword']) && trim($_POST['repeatPassword']) === trim($_POST['password'])) {
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if (isset($_POST['name']) && strlen(trim($_POST['name'])) >= 3 
+        && isset($_POST['surname']) && strlen(trim($_POST['surname'])) >= 3 
+        && isset($_POST['address']) && strlen(trim($_POST['address'])) >= 6 
+        && isset($_POST['email']) && strlen(trim($_POST['email'])) >= 6 
+        && isset($_POST['password']) && strlen(trim($_POST['password'])) >= 6 
+        && isset($_POST['repeatPassword']) 
+        && trim($_POST['repeatPassword']) === trim($_POST['password'])) {
 
-        if (!empty($_POST['email']) . $connect -> real_escape_string($_POST['email']) &&
-                !empty($_POST['password']) . $connect -> real_escape_string($_POST['password'])) {
+        if(!empty($_POST['email']) . $connect -> real_escape_string($_POST['email']) 
+            && !empty($_POST['password']) . $connect -> real_escape_string($_POST['password'])){
 
             // zmiana dnych użytkownka 
             $user -> setName(trim($_POST['name']));
