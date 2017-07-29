@@ -30,7 +30,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $user->setPassword(trim($_POST['password']));
             $user->save($connect);
             
-            
             echo 'Data corrected correctly! Your new username is: ' . $_POST['name'] . '<br>';
         }
         else{
