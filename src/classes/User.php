@@ -85,25 +85,28 @@ class User{
                     '{$this->surname}' , '{$this->address}')";
             
             $result = $connection->query($sql);
-            if($result){
+            if($result == true){
                 $this->id = $connection->insert_id;
                 return true;
             }
+            return false;
         }
         // lub aktualizacja 
         else{
-            $sql = "UPDATE Users SET email = '{$this->email}' , password = '{$this->password}' ,
-                    name = '{$this->name}' , surname = '{$this->surname}', address = '{$this->address}' 
-                    WHERE id = {$this->id}";
+            $sql = "UPDATE Users SET email = '{$this->email}', 
+                                     password = '{$this->password}',
+                                     name = '{$this->name}',
+                                     surname = '{$this->surname}', 
+                                     address = '{$this->address}' 
+                    WHERE id = '{$this->id}'";
             
-            $result = $connection->query($sql);
-            if($result){
+            if($connection->query($sql)){
                 return true;
             }
-        }
-        return false;
+            return false;
+        }      
     }
-    
+        
     // ładowanie wszytkich użytkowników 
     public static function loadAllUsers(mysqli $connection){
         
