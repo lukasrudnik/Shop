@@ -24,8 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user -> setPassword(trim($_POST['password']));
 
             if ($user -> save($connect)) {
-                $message = '<script language="javascript"> alert("New user has been successfully registered") </script>';
-                echo $message;
+                echo("<script>alert('New user has been successfully registered!')</script>");
+                echo("<script>window.location = 'login.php';</script>"); 
             } else {
                 $message = '<script language="javascript"> alert("Error while creating new user") </script>';
                 echo $message;

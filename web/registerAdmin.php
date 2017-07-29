@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $admin -> setPassword(trim($_POST['password']));
 
             if ($admin -> save($connect)) {
-                $message = '<script language="javascript"> alert("New admin has been successfully registered") </script>';
-                echo $message;
+                echo("<script>alert('New Admin has been successfully registered!')</script>");
+                echo("<script>window.location = 'loginAdmin.php';</script>"); 
             }
             else {
                 $message = '<script language="javascript"> alert("Error while creating new admin") </script>';
