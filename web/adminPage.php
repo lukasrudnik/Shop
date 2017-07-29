@@ -4,12 +4,12 @@ session_start();
 require_once '../src/initialClass.php';
 
 if(!isset($_SESSION['adminId'])){
-    header('Location: login.php');
+    header('Location: loginAdmin.php');
 }
 
 // Aktywna sesja użytkownika
 $userSession = $_SESSION['adminId'];
-$loggedUser = User::loadUserById($connect, $userSession);
+$admin = Admin::loadByAdminId($connect, $userSession);
 
 ?>
 <!DOCTYPE html>
@@ -25,10 +25,9 @@ $loggedUser = User::loadUserById($connect, $userSession);
     <div class="col-md-12">
         <nav class="navbar navbar-inverse" role="navigation">	
             <div class="navbar-header"> 
-                <a class="navbar-brand">Hello,
+                <a class="navbar-brand">Administrator:
                     <?php
-                        echo $loggedUser->getName() . " "; 
-                        echo $loggedUser->getSurname(); 
+                        echo $admin->getEmail(); 
                     ?> <!-- powitanie zalogowanego użytkownika -->
                 </a>
                 <a class="navbar-brand" href="index.php">Click to run to Shop page</a>
@@ -38,16 +37,16 @@ $loggedUser = User::loadUserById($connect, $userSession);
                   <li>
                     <?php
                        // przekierowanie na stronę zmiany danych użytkwnika
-                        if(isset($_SESSION['userId'])){              
-                            echo ("<a class=\"dropdown-toggle\" href=\"settings.php\">Settings</a>");
+                        if(isset($_SESSION['adminId'])){              
+                            echo ("<a class=\"dropdown-toggle\" href=\"settingsAdmin.php\">Settings</a>");
                         }
                     ?>
                     </li>
                     <li>
                     <?php
                         // wylogowanie zalogowanego użytkownika	
-                        if(isset($_SESSION['userId'])){
-                                echo ("<a class=\"dropdown-toggle\" href=\"logout.php\">Logout</a>");
+                        if(isset($_SESSION['adminId'])){
+                                echo ("<a class=\"dropdown-toggle\" href=\"logoutAdmin.php\">Logout</a>");
                         }             
                     ?>
                    </li>
@@ -62,5 +61,3 @@ $loggedUser = User::loadUserById($connect, $userSession);
     </div>
 </body>
 </html>
-
-?>

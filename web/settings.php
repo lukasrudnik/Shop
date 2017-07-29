@@ -3,33 +3,26 @@ session_start();
 
 require_once '../src/initialClass.php';
 
-if (!isset($_SESSION['userId'])) {
+if(!isset($_SESSION['userId'])){
     header('Location: login.php');
 }
 
 $userSession = $_SESSION['userId'];
-$user        = User::loadUserById($connect, $userSession);
+$user = User::loadUserById($connect, $userSession);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['name']) && strlen(trim($_POST['name'])) >= 3 && isset($_POST['surname']) && strlen(trim($_POST['surname'])) >= 3 && isset($_POST['address']) && strlen(trim($_POST['address'])) >= 6 && isset($_POST['email']) && strlen(trim($_POST['email'])) >= 6 && isset($_POST['password']) && strlen(trim($_POST['password'])) >= 6 && isset($_POST['repeatPassword']) && trim($_POST['repeatPassword']) === trim($_POST['password'])) {
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if (isset($_POST['name']) && strlen(trim($_POST['name'])) >= 3 
+        && isset($_POST['surname']) && strlen(trim($_POST['surname'])) >= 3 
+        && isset($_POST['address']) && strlen(trim($_POST['address'])) >= 6 
+        && isset($_POST['email']) && strlen(trim($_POST['email'])) >= 6 
+        && isset($_POST['password']) && strlen(trim($_POST['password'])) >= 6 
+        && isset($_POST['repeatPassword']) 
+        && trim($_POST['repeatPassword']) === trim($_POST['password'])) {
 
-        if (!empty($_POST['email']) . $connect -> real_escape_string($_POST['email']) &&
-                !empty($_POST['password']) . $connect -> real_escape_string($_POST['password'])) {
+        if(!empty($_POST['email']) . $connect -> real_escape_string($_POST['email']) 
+            && !empty($_POST['password']) . $connect -> real_escape_string($_POST['password'])){
 
             // zmiana dnych użytkownka 
-<<<<<<< HEAD
-            $user->setName(trim($_POST['name']));
-            $user->setSurname(trim($_POST['surname']));
-            $user->setEmail(trim($_POST['email']));
-            $user->setAddress(trim($_POST['address']));
-            $user->setPassword(trim($_POST['password']));
-            $user->save($connect);
-            
-            echo 'Data corrected correctly! Your new username is: ' . $_POST['name'] . '<br>';
-        }
-        else{
-            echo 'The given passwords are not identical, data is were not corrected! <br>';
-=======
             $user -> setName(trim($_POST['name']));
             $user -> setSurname(trim($_POST['surname']));
             $user -> setEmail(trim($_POST['email']));
@@ -44,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $message = '<script language="javascript"> alert("Error!") </script>';
                 echo $message;
             }
->>>>>>> df593d049aa5f9550a567ddb81f87697011ad6dc
         }
     }
 }
