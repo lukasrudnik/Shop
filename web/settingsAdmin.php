@@ -106,7 +106,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     </form> 
                     <br><br><br>
                     <form action="deleteAdmin.php" method="post">
-                        <button type="submit" class="btn btn-danger" value="deleteUser">Delete</button>
+                        <button type="submit" class="btn btn-danger" value="deleteAdmin">Delete</button>
                     </form> 
                 </div>
             </div>
