@@ -3,24 +3,24 @@ session_start();
 
 require_once '../src/initialClass.php';
 
-if(!isset($_SESSION['userId'])){
-    header('Location: ../public/login.php');
+if(!isset($_SESSION['adminId'])){
+    header('Location: ../public/loginAdmin.php');
 }
 
-$userSession = $_SESSION['userId'];
-$loggedUser = User::loadUserById($connect, $userSession);
+$adminSession = $_SESSION['adminId'];
+$admin = Admin::loadByAdminId($connect, $adminSession);
 
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deleteUser'])){     
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deleteAdmin'])){     
     
-    $deleteUser = trim($_POST['deleteUser']);
+    $deleteAdmin = trim($_POST['deleteAdmin']);
      
         // pole wyboru usunięcia użytkownika 
-        switch ($deleteUser){
+        switch ($deleteAdmin){
             case 'no':
-                header("Location: userPage.php");
+                header("Location: adminPage.php");
                 break;
             case 'yes':
-                if ($loggedUser->delete($connect)){
+                if ($admin->delete($connect)){
                     header("Location: index.php");
                 }
                 else{
@@ -44,13 +44,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deleteUser'])){
         <div class="jumbotron"> 
             <form action="" method="post" role="form">
                 <legend>
-                   Are you sure to delete your account 
+                   Are you sure to delete Administrator account 
                    <?php 
-                        echo $loggedUser->getName() . " " . $loggedUser->getSurname() . '?'; 
+                        echo $admin -> getEmail() . '?'; 
                    ?>
                </legend>
-               <button type="submit" class="btn btn-danger" value="yes" name="deleteUser">Yes</button>
-               <button type="submit" class="btn btn-success" value="no" name="deleteUser">No</button>  
+               <button type="submit" class="btn btn-danger" value="yes" name="deleteAdmin">Yes</button>
+               <button type="submit" class="btn btn-success" value="no" name="deleteAdmin">No</button>  
             </form> 
         </div>
         </div>      

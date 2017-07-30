@@ -100,6 +100,7 @@ else{
 }
 echo "<br>";
 
+
 $sql = "CREATE TABLE Categories ( 
         id int AUTO_INCREMENT NOT NULL,
         category_id int(3) NOT NULL,
@@ -115,6 +116,18 @@ else{
     ("Błąd podczas tworzenia tabeli Categories!" . "<br>" . $connect->error);
 }
 echo "<br>";
+
+
+$sql = "INSERT INTO Categories(category_id, category_name) 
+    values(1, 'Vegetables'), (2 ,'Fruits')";
+
+$result = $connect->query($sql);
+if($result === TRUE){
+    echo("Dane dodane");
+}
+else{
+    echo ("Błąd podczas dodawania danych" . "<br>" . $connect->error);
+}
 
 // ENGINE=InnoDB, CHARACTER SET=utf8
 

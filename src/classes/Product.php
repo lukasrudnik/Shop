@@ -182,7 +182,7 @@ class Product
 
         $sql = "SELECT * FROM Products JOIN Categories ON Products.category_id = Categories.category_id JOIN Images ON Products.product_id = Images.product_id WHERE Images.type = 1";
 
-        $result       = $conn -> query($sql);
+        $result       = $connection -> query($sql);
         $productTable = [];
 
         if($result == true && $result -> num_rows > 0){
