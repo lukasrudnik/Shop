@@ -23,10 +23,10 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li class="cities">
-                                    <a href="fruitsList.php"> Fresch Fruits</a>
+                                    <a href="fruitsList.php"> Fresh Fruits</a>
                                 </li>
                                 <li class="cities">
-                                    <a href="vegetablesList.php"> Fresch Vegetables</a>
+                                    <a href="vegetablesList.php"> Fresh Vegetables</a>
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -54,7 +54,7 @@
                                         <strong class="caret"></strong></a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href=adminPage.php>Admin Panel</a>
+                                            <a href=adminPage.php>Administrator Panel</a>
                                         </li>			
                                         <li class="divider"></li>
                                         <li>
@@ -154,7 +154,6 @@
                     </div>
                     <div class="col-md-4">
                         <h2 style="color:#0F0F0F">Guarantee of quality</h2>
-
                         <p>
                             <img src="../images/Quality.jpg" alt="Quality Picture" width="50%" height="50%">
                         </p>

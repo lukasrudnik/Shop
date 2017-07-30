@@ -1,6 +1,7 @@
 <?php
 
-echo "tu będzie lista warzyw";
+require_once '../src/initialClass.php';
 
+$categoryTable = ['Vegetables', 'Fruits'];
 
 ?>

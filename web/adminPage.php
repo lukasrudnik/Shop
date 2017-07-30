@@ -8,8 +8,8 @@ if(!isset($_SESSION['adminId'])){
 }
 
 // Aktywna sesja użytkownika
-$userSession = $_SESSION['adminId'];
-$admin = Admin::loadByAdminId($connect, $userSession);
+$adminSession = $_SESSION['adminId'];
+$admin = Admin::loadByAdminId($connect, $adminSession);
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ $admin = Admin::loadByAdminId($connect, $userSession);
                         echo $admin->getEmail(); 
                     ?> <!-- powitanie zalogowanego użytkownika -->
                 </a>
-                <a class="navbar-brand" href="index.php">Click to run to Shop page</a>
+                <a class="navbar-brand" href="index.php">Click to run to main page</a>
             </div>
             <div class="container-fluid">
                 <ul class="nav navbar-nav navbar-right">
