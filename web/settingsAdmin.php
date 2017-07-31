@@ -50,7 +50,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <div class="navbar-header"> 
                 <a class="navbar-brand">Administrator:
                     <?php
-                        echo $admin->getEmail(); 
+                        echo ' (id: ' . $admin->getId() . ') ';
+                        echo ' (mail: ' . $admin->getEmail() . ')';
                     ?> <!-- powitanie zalogowanego użytkownika -->
                 </a>
                 <a class="navbar-brand" href="index.php">Click to run to main page</a>
@@ -81,7 +82,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <div class="container-fluid">
                     <form method="POST">
                         <label>
-                           <h4>Administrator E-mail:</h4>
+                           <h4>Administrator e-mail:</h4>
                             <?php
                             echo $admin -> getEmail();
                             ?>

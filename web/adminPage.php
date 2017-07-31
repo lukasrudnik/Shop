@@ -66,27 +66,29 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
     
                 // widoczni są użytkownicy nie w sesji admina
                 if($user->getId() != $adminSession){
-        
-                    // formularz do wysyłania wiadomości 
-                    echo '<b> id: ' . $user->getId() . '<br> ' . $user->getName() . ' ' . 
-                        $user->getSurname() . '<br>' . 
-                        $user->getEmail() . '<br>' . $user->getAddress() . '</b><br>'; 
                     
-                    // wysyłanie wiadomości do usera
+                    $idUsera = $user->getId();
+        
+                    // dane uzytkownikow
+                    echo '<b> id: ' . $idUsera . '<br> ' . 
+                        'name: ' . $user->getName() . '<br>' . 
+                        'surname: ' . $user->getSurname() . '<br>' . 
+                        'e-mail: ' . $user->getEmail() . '<br>' . 
+                        'address: ' . $user->getAddress() . '</b><br>'; 
+                    
+                    // wysyłanie wiadomości do usera (na razie nie dziala)
                     echo ('<br><form method="POST">
                         <input type="hidden" name="messageForm" value="messageForm">
                         <input type="text" class="form-control" name="newMessage" 
                         placeholder="only 255 characters"><input type="hidden" name="receiver" 
-                        value="' . $user->getId() . '"><input type="submit" class="btn btn-success" value="Send message"></form >' . "<br>");
-     
-// ToDo   pobrać id użytkownika  !!!!!!!!!!!!!
-                    
+                        value="' . $user->getId() . '"><input type="submit" class="btn btn-success" value="Send message"></form>' . "<br>");
+    
+                    // formularz do usuwania uzytkownika
                     echo('<form action="deleteUserByAdmin.php" method="post">
-                        <button type="submit" class="btn btn-danger" value="deleteUserByAdmin">Delete</button>
-                    </form><br><br>'); 
+                        <button type="submit" class="btn btn-danger" name="idUsera" 
+                        value="' . $idUsera . '">Delete</button></form><br><hr>');   
                 }
             }
-  
         }
         ?>                           
         </div>
