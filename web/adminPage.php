@@ -7,7 +7,7 @@ if(!isset($_SESSION['adminId'])){
     header('Location: loginAdmin.php');
 }
 
-// Aktywna sesja użytkownika
+// Aktywna sesja adminia
 $adminSession = $_SESSION['adminId'];
 $admin = Admin::loadByAdminId($connect, $adminSession);
 
@@ -27,8 +27,9 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
             <div class="navbar-header"> 
                 <a class="navbar-brand">Administrator:
                     <?php
-                        echo $admin->getEmail(); 
-                    ?> <!-- powitanie zalogowanego użytkownika -->
+                        echo ' (id: ' . $admin->getId() . ') ';
+                        echo ' (mail: ' . $admin->getEmail() . ')'; 
+                    ?> <!-- powitanie zalogowanego admina -->
                 </a>
                 <a class="navbar-brand" href="index.php">Click to run to main page</a>
             </div>
@@ -36,7 +37,7 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
                 <ul class="nav navbar-nav navbar-right">
                   <li>
                     <?php
-                       // przekierowanie na stronę zmiany danych użytkwnika
+                       // przekierowanie na stronę zmiany danych admina
                         if(isset($_SESSION['adminId'])){              
                             echo ("<a class=\"dropdown-toggle\" href=\"settingsAdmin.php\">Settings</a>");
                         }
@@ -44,7 +45,7 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
                     </li>
                     <li>
                     <?php
-                        // wylogowanie zalogowanego użytkownika	
+                        // wylogowanie zalogowanego admina	
                         if(isset($_SESSION['adminId'])){
                                 echo ("<a class=\"dropdown-toggle\" href=\"logoutAdmin.php\">Logout</a>");
                         }             
@@ -53,10 +54,41 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
                 </ul>
             </div>
         </nav>
-        <div class="jumbotron">
-              
-                        
-              
+        <div class="jumbotron">   
+        <?php
+            
+        // ładowanie wszystkich użytkowników sklepu
+        if($adminSession == true){
+
+            // dobieranie się do loadAllUsers w klasie statycznej User
+            $allUsers = User::loadAllUsers($connect);    
+            foreach($allUsers as $user){
+    
+                // widoczni są użytkownicy nie w sesji admina
+                if($user->getId() != $adminSession){
+        
+                    // formularz do wysyłania wiadomości 
+                    echo '<b> id: ' . $user->getId() . '<br> ' . $user->getName() . ' ' . 
+                        $user->getSurname() . '<br>' . 
+                        $user->getEmail() . '<br>' . $user->getAddress() . '</b><br>'; 
+                    
+                    // wysyłanie wiadomości do usera
+                    echo ('<br><form method="POST">
+                        <input type="hidden" name="messageForm" value="messageForm">
+                        <input type="text" class="form-control" name="newMessage" 
+                        placeholder="only 255 characters"><input type="hidden" name="receiver" 
+                        value="' . $user->getId() . '"><input type="submit" class="btn btn-success" value="Send message"></form >' . "<br>");
+     
+// ToDo   pobrać id użytkownika  !!!!!!!!!!!!!
+                    
+                    echo('<form action="deleteUserByAdmin.php" method="post">
+                        <button type="submit" class="btn btn-danger" value="deleteUserByAdmin">Delete</button>
+                    </form><br><br>'); 
+                }
+            }
+  
+        }
+        ?>                           
         </div>
     </div>
 </body>

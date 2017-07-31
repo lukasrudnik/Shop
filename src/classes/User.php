@@ -115,7 +115,7 @@ class User{
         $result = $connection->query($sql);
         $userTable = [];
         
-        if($result->num_rows > 1){
+        if($result->num_rows > 0){
             foreach ($result as $row){
                 
                 $user = new User();
@@ -192,6 +192,7 @@ class User{
         }
         return true;
     }
+    
 }
 
 ?>
