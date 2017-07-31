@@ -60,7 +60,6 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
                             // echo  ' ' . $userId->getName();
                             $userId->delete($connect);
                             header('Location: adminPage.php');  
-            
                         }
                     }
             
@@ -69,37 +68,4 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
         </div>
         </div>      
     </body>
-</html>          
-<?php
-
-// wybieranie opcji usuniecia uzytkownika z sesji admin
-
-
-
-
-//if ($adminSession) {
-//    
-//        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deleteUserByAdmin'])){     
-//    
-//            $deleteUser = trim($_POST['deleteUserByAdmin']);
-//            
-//            // pole wyboru usunięcia użytkownika 
-//            switch ($deleteUser){
-//                case 'no':
-//                    header("Location: adminPage.php");
-//                    break;
-//                case 'yes':
-//                    echo'<pre>';          
-//                    if ($userById->delete($connect)){
-//                        header("Location: adminPage.php");
-//                    }
-//                    else{
-//                        echo 'Something went wrong, please try again! <br>';
-//                    }
-//                    break;
-//            }
-//        }
-//    
-//}
-
-?>
+</html>
