@@ -104,9 +104,7 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
                             <form action="#" method="post">
                             <input type="hidden" name="idUsera" value="' . $idUsera . '">
                             <button type="submit" class="btn btn-warning" value="idUsera">
-                            change value </button></form><br>');
-                            
-                            
+                            change value </button></form><br>');                      
                         }
                                                               
                         // zmiana danych uzytkownika 

@@ -56,5 +56,6 @@ $loggedUser  = User::loadUserById($connect, $userSession);
             <div class="jumbotron">
                 
             </div>
+        </div>
     </body>
 </html>

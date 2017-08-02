@@ -57,7 +57,7 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
             </div>
         </nav>
         <div class="jumbotron">  
-        <div class="col-md-12"> 
+        <div class="container-fluid">
         <?php
             
         // ładowanie wszystkich użytkowników sklepu
