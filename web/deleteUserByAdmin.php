@@ -16,7 +16,30 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
-    <body> 
+    <body>
+        <nav class="navbar navbar-inverse" role="navigation">	
+            <div class="navbar-header"> 
+                <a class="navbar-brand">Administrator:
+                    <?php
+                        echo ' (id: ' . $admin->getId() . ') ';
+                        echo ' (mail: ' . $admin->getEmail() . ')'; 
+                    ?>
+                </a> 
+            </div>
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <?php
+                            // przekierowanie na stronę zmiany danych użytkwnika
+                            if (isset($_SESSION['adminId'])) {
+                                echo ("<a class=\"dropdown-toggle\" href=\"adminPage.php\">
+                                        Back to Administrator page</a>");
+                            }
+                        ?>
+                    </li>
+                </ul>
+         </div>
+        </nav>
         <div class="container">
         <div class="jumbotron"> 
             <legend>

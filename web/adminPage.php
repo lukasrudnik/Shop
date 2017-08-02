@@ -39,7 +39,8 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
                     <?php
                        // przekierowanie na stronę zmiany danych admina
                         if(isset($_SESSION['adminId'])){              
-                            echo ("<a class=\"dropdown-toggle\" href=\"settingsAdmin.php\">Settings</a>");
+                            echo ("<a class=\"dropdown-toggle\"
+                                    href=\"settingsAdmin.php\">Settings</a>");
                         }
                     ?>
                     </li>
@@ -47,14 +48,16 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
                     <?php
                         // wylogowanie zalogowanego admina	
                         if(isset($_SESSION['adminId'])){
-                                echo ("<a class=\"dropdown-toggle\" href=\"logoutAdmin.php\">Logout</a>");
+                                echo ("<a class=\"dropdown-toggle\"
+                                        href=\"logoutAdmin.php\">Logout</a>");
                         }             
                     ?>
                    </li>
                 </ul>
             </div>
         </nav>
-        <div class="jumbotron">   
+        <div class="jumbotron">  
+        <div class="col-md-12"> 
         <?php
             
         // ładowanie wszystkich użytkowników sklepu
@@ -76,21 +79,27 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
                         'e-mail: ' . $user->getEmail() . '<br>' . 
                         'address: ' . $user->getAddress() . '</b><br>'; 
                     
-                    // wysyłanie wiadomości do usera (na razie nie dziala)
+                    // wysyłanie wiadomości do usera (na razie nie dziala !!!)
                     echo ('<br><form method="POST">
                         <input type="hidden" name="messageForm" value="messageForm">
                         <input type="text" class="form-control" name="newMessage" 
                         placeholder="only 255 characters"><input type="hidden" name="receiver" 
                         value="' . $user->getId() . '"><input type="submit" class="btn btn-success" value="Send message"></form>' . "<br>");
+                    
+                    // formularz do zmiany danych uzytkownika
+                    echo('<form action="changeUserByAdmin.php" method="post">
+                        <button type="submit" class="btn btn-warning" name="idUsera" 
+                        value="' . $idUsera . '">Change data</button></form><br>');
     
                     // formularz do usuwania uzytkownika
                     echo('<form action="deleteUserByAdmin.php" method="post">
                         <button type="submit" class="btn btn-danger" name="idUsera" 
-                        value="' . $idUsera . '">Delete</button></form><br><hr>');   
+                        value="' . $idUsera . '">Delete</button></form><br><hr>');
                 }
             }
         }
         ?>                           
+        </div>
         </div>
     </div>
 </body>
