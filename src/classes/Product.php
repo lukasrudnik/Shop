@@ -11,8 +11,9 @@ class Product
     private $in_stock;
     private $category_id;
 
-    public function __construct()
+    public function __construct() 
     {
+        
         $this -> id          = -1;
         $this -> name        = '';
         $this -> price       = 0;
@@ -24,7 +25,7 @@ class Product
 
     function getId()
     {
-        return $this -> category;
+        return $this -> id;
     }
 
     function getName()
@@ -88,11 +89,11 @@ class Product
     }
 
     // zapisywanie do DB
-    public function saveToDB()
-    {
+    public function saveToDB() {
+        
         $sql = sprintf("INSERT INTO Products (`name`, `price`, `amount`, `description`, `in_stock`,
-                `category_id`)
-                VALUES ('%s', '%s', '%s', '%s', '%s', '%s');", 
+                        `category_id`)
+                        VALUES ('%s', '%s', '%s', '%s', '%s', '%s');", 
                 $this -> getName(), 
                 $this -> getPrice(), 
                 $this -> getAmount(), 
@@ -107,8 +108,8 @@ class Product
     }
 
     // usuwane z DB
-    public function deleteFromDB()
-    {
+    public function deleteFromDB() {
+        
         $sql = "DELETE FROM Products WHERE id = $id";
         if (Product::$connection -> query($sql) === TRUE) {
             return true;
@@ -117,10 +118,11 @@ class Product
     }
 
     // ładowanie produktów po ich ID +  
-    public static function loadProductsById(mysqli $connection, $id)
-    {
+    public static function loadProductsById(mysqli $connection, $id) {
 
-        $sql = "SELECT * FROM Products JOIN Categories ON Products.category_id = Categories.category_id JOIN Images ON Products.product_id = Images.product_id WHERE Images.type = 1 AND Products.product_id = $id";
+        $sql = "SELECT * FROM Products JOIN Categories ON Products.category_id = Categories.category_id           JOIN Images ON Products.product_id = Images.product_id 
+                WHERE Images.type = 1 
+                AND Products.product_id = $id";
 
         $result = $connection -> query($sql);
 
@@ -146,11 +148,12 @@ class Product
     }
 
     // ładowanie produktów po ID ich kategorii
-    public static function loadProductsByCategory(mysqli $connection, $category)
-    {
+    public static function loadProductsByCategory(mysqli $connection, $category) {
 
         $sql = "SELECT * FROM Products JOIN Categories ON Products.category_id = Categories.category_id
-        JOIN Images ON Products.product_id = Images.product_id WHERE Images.type = 1 AND Categories.category_name = '$category'";
+                JOIN Images ON Products.product_id = Images.product_id 
+                WHERE Images.type = 1 
+                AND Categories.category_name = '$category'";
 
         $result       = $connection -> query($sql);
         $productTable = [];
@@ -177,10 +180,10 @@ class Product
     }
 
     // ładowanie wszydtkich prodóktów 
-    public static function loadAllProducts(mysqli $connection)
-    {
+    public static function loadAllProducts(mysqli $connection) {
 
-        $sql = "SELECT * FROM Products JOIN Categories ON Products.category_id = Categories.category_id JOIN Images ON Products.product_id = Images.product_id WHERE Images.type = 1";
+        $sql = "SELECT * FROM Products JOIN Categories ON Products.category_id = Categories.category_id           JOIN Images ON Products.product_id = Images.product_id 
+                WHERE Images.type = 1";
 
         $result       = $connection -> query($sql);
         $productTable = [];
@@ -204,6 +207,28 @@ class Product
             }
         }
         return $productTable;
+    }
+    
+    // dodawanie nowego produktu 
+    public static function createProduct($name, $price, $amount, $description, $in_stock, $category_id) {
+        
+        $sql = "SELECT * FROM Products WHERE name = '$name' and del_by_admin = 0";
+        
+        $result = Product::$connect->query($sql);
+        
+        if ($result->num_rows == 0) {
+            
+            $in_stock = 0;
+            
+            $sql = "INSERT INTO Products(name, price, amount, description, in_stock, category_id) 
+                    values ('$name', '$price', '$amount', '$description', '$in_stock',' $category_id')";
+            
+            if (Product::$connect->query($sqlStatement) === true) {
+                
+                return new Product(Product::$connect->insert_id, $name, $price, $amount, $description,                      $in_stock, $category_id);
+            }
+        }
+        return null;
     }
 
 }
