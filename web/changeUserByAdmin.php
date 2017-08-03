@@ -11,7 +11,7 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Delete Page</title>
+        <title>Change data Page</title>
         <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -66,7 +66,7 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
                             // przyciski do usuwania uzytkownika
                             echo('<form action="adminpage.php" method="post">
                                 <button type="submit" class="btn btn-success" name="backPage" 
-                                value="' . $idUsera . '">No!</button></form><br><br>');
+                                value="' . $idUsera . '">No!</button></form><br>');
                             
                             /* formularze do zmiany danych uzytkownika - hidden przekazuje
                                zmienna z ID usera ktorego zmieniam dane */

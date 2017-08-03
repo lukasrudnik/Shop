@@ -16,7 +16,7 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
 <html lang="en">
 <head>
     <meta charset="UTF-8"> 
-        <title>User page</title>
+        <title>Admin page</title>
         <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -31,7 +31,8 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
                         echo ' (mail: ' . $admin->getEmail() . ')'; 
                     ?> <!-- powitanie zalogowanego admina -->
                 </a>
-                <a class="navbar-brand" href="index.php">Click to run to main page</a>
+                <a class="navbar-brand" href="index.php">Run to main page</a>
+                <a class="navbar-brand" href="addProducts.php">Add new products</a>
             </div>
             <div class="container-fluid">
                 <ul class="nav navbar-nav navbar-right">
