@@ -89,24 +89,58 @@ class Product
     }
 
     // zapisywanie do DB
-    public function saveToDB() {
+//    public function saveToDB() {
+//        
+//        $sql = sprintf("INSERT INTO Products (`name`, `price`, `amount`, `description`, `in_stock`,
+//                        `category_id`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s');", 
+//                $this -> getName(), 
+//                $this -> getPrice(), 
+//                $this -> getAmount(), 
+//                $this -> getDescription(), 
+//                $this -> getIn_stock(), 
+//                $this -> getCategory_id());
+//        
+//        $result = $connection->query($sql);
+//       
+//        if ($result == true) {
+//            return true;
+//        }
+//        return false;
+//    }
+    
+    public function save(mysqli $connection) {
         
-        $sql = sprintf("INSERT INTO Products (`name`, `price`, `amount`, `description`, `in_stock`,
-                        `category_id`)
-                        VALUES ('%s', '%s', '%s', '%s', '%s', '%s');", 
-                $this -> getName(), 
-                $this -> getPrice(), 
-                $this -> getAmount(), 
-                $this -> getDescription(), 
-                $this -> getIn_stock(), 
-                $this -> getCategory_id());
-        $result = $connection->query($sql);
-        if ($result == true) {
-            return true;
+        if ($this->id == -1) {
+            
+            $sql = "INSERT INTO Products (name, price, amount, description, in_stock, category_id)
+                    VALUES ('{$this->name}' , '{$this->price}' , '{$this->amount}' , 
+                            '{$this->description}' , '{$this->in_stock}' , '{$this->category_id}')";
+            
+            $result = $connection->query($sql);
+            
+            if($result == true){          
+                $this->id = $connection->insert_id;
+                return true;
+            }
+            return false;
         }
-        return false;
+        // lub aktualizacja 
+        else{
+            $sql = "UPDATE Products SET name = '{$this->name}', 
+                                     price = '{$this->price}',
+                                     amount = '{$this->amount}',
+                                     description = '{$this->description}', 
+                                     in_stock = '{$this->in_stock}',
+                                     category_id = '{$this->category_id}' 
+                    WHERE id = '{$this->id}'";
+            
+            if ($connection->query($sql)) {
+                return true;
+            }
+            return false;
+        }      
     }
-
+    
     // usuwane z DB
     public function deleteFromDB() {
         
@@ -212,7 +246,7 @@ class Product
     // dodawanie nowego produktu 
     public static function createProduct($name, $price, $amount, $description, $in_stock, $category_id) {
         
-        $sql = "SELECT * FROM Products WHERE name = '$name' and del_by_admin = 0";
+        $sql = "SELECT * FROM Products WHERE name = '$name'";
         
         $result = Product::$connect->query($sql);
         
@@ -223,7 +257,7 @@ class Product
             $sql = "INSERT INTO Products(name, price, amount, description, in_stock, category_id) 
                     values ('$name', '$price', '$amount', '$description', '$in_stock',' $category_id')";
             
-            if (Product::$connect->query($sqlStatement) === true) {
+            if (Product::$connect->query($sql) === true) {
                 
                 return new Product(Product::$connect->insert_id, $name, $price, $amount, $description,                      $in_stock, $category_id);
             }

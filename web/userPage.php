@@ -54,7 +54,14 @@ $loggedUser  = User::loadUserById($connect, $userSession);
                 </div>
             </nav>
             <div class="jumbotron">
-                
+            <div class="col-md-12">
+            <?php
+             if($loggedUser == true){
+                 
+                 echo "'Tu będzie się wyświetlał koszyk klienta " . $loggedUser->getName() ."'";
+             }
+            ?>     
+            </div>
             </div>
         </div>
     </body>

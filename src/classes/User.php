@@ -80,12 +80,14 @@ class User{
     public function save(mysqli $connection){
         
         if($this->id == -1){
+            
             $sql = "INSERT INTO Users (email, password, name, surname, address) 
                     VALUES ('{$this->email}' , '{$this->password}' , '{$this->name}' ,
                     '{$this->surname}' , '{$this->address}')";
             
             $result = $connection->query($sql);
-            if($result == true){
+            
+            if($result == true){             
                 $this->id = $connection->insert_id;
                 return true;
             }

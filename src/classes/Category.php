@@ -66,8 +66,8 @@ class Category {
                 
                 $category = new Category();
                 $category->id = $row['id'];
-                $category->category_id = $row['$category_id'];
-                $category->category_name = $row['$category_name'];
+                $category->category_id = $row['category_id'];
+                $category->category_name = $row['category_name'];
 
                 $categoryTable[] = $category;
             }
@@ -101,7 +101,7 @@ class Category {
         return null;
     }
     
-    // zapisywanie do DB
+    // zapisywanie do DB (są tylko dwie kategorie -  bo to warzywniak :))
     public function save() {
         $sql = "UPDATE Categories SET category_name = '{$this->category_name}' 
                 WHERE category_id = {$this->category_id}";

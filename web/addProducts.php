@@ -56,104 +56,107 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
         </nav>
         <div class="jumbotron">  
         <div class="container-fluid">
-            <form action="" method="post" role="form" enctype="multipart/form-data">
-                <legend>Add new product</legend>
-                    <div class="form-group">
-                        <label for="">Name</label>
-                        <input type="text" class="form-control" name="name"
-                               placeholder="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Amount</label>
-                        <input type="number" class="form-control" name="amount"
-                               placeholder="amount" step="1">
-                    </div>     
-                    <div class="form-group">
-                            <label for="">Price</label>
-                            <input type="number" class="form-control" name="price"
-                                   placeholder="price" step="0.01">
-                    </div> 
-                    <div class="form-group">
-                            <label for="">Description</label>
-                            <input type="textarea" class="form-control" name="description"
-                                   placeholder="description">
-                    </div>  
-                    <div class="form-group">
-                            <label for="">Stock</label>
-                            <input type="number" class="form-control" name="in_stock"
-                                   placeholder="in stock">
-                     </div>
-                     <div class="form-group">
-                        <label for="">Category ID</label>
-                            <select class="form-control" name="category_id"
-                                    placeholder="category id">
-                        <?php
-                                
+            <legend>Add new product:</legend>
+                <form method="post">
+                    <label for="name">Product name</label>
+                        <input type="text" class="form-control" name="name" placeholder="add name">
+                    <br>  
+                    <label for="price">Product price</label>
+                        <input type="number" class="form-control" name="price" placeholder="add price"
+                               step="0.01">
+                    <br>  
+                    <label for="amount">Product amount</label>
+                        <input type="number" class="form-control" name="amount" placeholder="add amount"
+                               step="1">           
+                    <br>
+                    <label for="description">Product description</label>
+                        <input type="text" class="form-control" name="description" 
+                               placeholder="add description">            
+                    <br>
+                    <label for="in_stock">Stock</label>
+                        <select class="form-control" name="in_stock"> 
+		                    <option>1</option>
+		                    <option>0</option>
+		                </select>
+                    <br>
+                    <label for="category_id">Category ID</label>
+                        <select class="form-control" name="category_id" placeholder="category id">
+                        <?php                             
                             if ($adminSession == true) {
                                 
-                                // pobieranie i wyświetlanie kategorii           
-                                $categories = Category::loadAllCategory($connect);
+                                // pobieranie z DB i wyświetlanie kategorii           
+                                $allCategories = Category::loadAllCategory($connect);
                                                          
-                                foreach ($categories as $category) {
-                                    echo '<option value = ' . $category->getCategory_id() . ' >';
-                                    echo $category->getCategory_name();
-                                    echo '</option>';
+                                foreach ($allCategories as $category) {
                                     
-                                    echo $category->getCategory_name();
+                                     echo '<option value = ' . $category->getCategory_id() . '>' .             $category->getCategory_name() . '</option>';    
                                 }
-                         }
-                                
-                        ?>                        
+                            }                            
+                         ?>                       
                         </select>
-                    </div>
-                    <br>
-                    <div class="form-group">
-                            <label for="">Add photo</label>
+                        <br>
+                        <button type="submit" class="btn btn-success">Add product</button>
+                        <br><br>
+                </form>
+                <form method="post">
+                       <br>
+                        <!-- dodawanie zdjęcia produktu -->
+                        <label for="image">Add product photo</label>
                             <input type="file" name="image" class="btn btn-default">
-                    </div>
-                    <br>
-                        <button type="submit" class="btn btn-success">Add photo</button>
-                    </form>
-    <?php
-            
-        if($adminSession == true){
-                
-            if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['name']) 
-               && !empty($_POST['amount']) && !empty($_POST['price']) 
-               && !empty($_POST['description']) && !empty($_POST['in_stock']) 
-               //&& !empty($_POST['category_id']))
-            ){
+                        <br>
+                        <button type="submit" class="btn btn-primary">Add photo</button>
+                        <br><br>
+                </form>
+        <?php          
+        if ($adminSession == true) {
+               
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && isset($_POST['price'])
+                && isset($_POST['amount']) && isset($_POST['description']) && isset($_POST['in_stock']) 
+                && isset($_POST['category_id'])) {
         
-                    $productName = trim($_POST['name']);
-                    $productAmount = trim($_POST['amount']);
-                    $productPrice = trim($_POST['price']);
-                    $productDescription = trim($_POST['description']);
-                    $productInStock = trim($_POST['in_stock']);
-                   // $productCategoryId = trim($_POST['category_id']);
+                $productName = trim($_POST['name']);
+                $productPrice = trim($_POST['price']);
+                $productAmount = trim($_POST['amount']);               
+                $productDescription = trim($_POST['description']);
+                $productInStock = trim($_POST['in_stock']);
+                $productCategoryId = trim($_POST['category_id']);
                 
-                    $newProduct = Product::createProduct($productName, $productPrice, $productAmount, 
-                                           $productDescription, $productInStock);
-                // , $productCategoryId
-                        
-                        $newProduct -> setName(trim($_POST['name']));
-                        $newProduct -> setAmount(trim($_POST['amount']));
-                        $newProduct -> setPrice(trim($_POST['price']));                      
-                        $newProduct -> setDescription(trim($_POST['description']));
-                        $newProduct -> setInStock(trim($_POST['in_stock']));
-                       // $newProduct->setCategory_id($productCategoryId);
-                        $newProduct -> saveToDB($connect);
+                $newProduct = new Product();        
+                $newProduct -> setName(trim($_POST['name']));
+                $newProduct -> setPrice(trim($_POST['price'])); 
+                $newProduct -> setAmount(trim($_POST['amount']));                              
+                $newProduct -> setDescription(trim($_POST['description']));
+                $newProduct -> setIn_stock(trim($_POST['in_stock']));
+                $newProduct -> setCategory_id(trim($_POST['category_id']));
+                // $newProduct -> save($connect);
                                     
-                        if ($newProduct->saveToDB()) {
-                            
-                            echo "OK";
-                
-                        }
+                if ($newProduct -> save($connect)) {                     
+                            echo "Added product";
+                }
+                else {
+                    echo "Error!";
                 }
             }
-                    
-    ?>       
+        }  
+        ?>       
         </div>
         </div>
-    </div>  
+    </div> 
+    <div class="col-md-12">
+        <div class="jumbotron">  
+        <div class="container-fluid">
+           <legend>Product list:</legend>
+            <?php
+            if ($adminSession == true) {
+                
+//                $sql = "SELECT * FROM Products";
+//                $query = $connect->query($sql);
+                
+                echo "'Tu będzie się wyświetlała lista produktów w sklepie'";
+            }
+        ?>
+        </div>
+        </div> 
+    </div>
 </body>
 </html>

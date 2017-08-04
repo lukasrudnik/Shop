@@ -44,12 +44,12 @@ echo "<br>";
 $sql = "CREATE TABLE Products ( 
         id int AUTO_INCREMENT NOT NULL,
         name varchar(255) NOT NULL,
-        price decimal(5,2) NOT NULL,
-        amount int(5) NOT NULL,
+        price decimal NOT NULL,
+        amount int NOT NULL,
         descritpion varchar(255) NOT NULL,
         in_stock int NOT NULL,
-        category_id int(3),
-        PRIMARY KEY(id) 
+        category_id int,
+        PRIMARY KEY(id)
         )";
 
 $result = $connect->query($sql);
@@ -103,7 +103,7 @@ echo "<br>";
 
 $sql = "CREATE TABLE Categories ( 
         id int AUTO_INCREMENT NOT NULL,
-        category_id int(3) NOT NULL,
+        category_id int NOT NULL,
         category_name varchar(30) NOT NULL,
         PRIMARY KEY(id)
         )";

@@ -59,6 +59,7 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
         </nav>
         <div class="jumbotron">  
         <div class="container-fluid">
+        <legend>Users list:</legend>
         <?php
             
         // ładowanie wszystkich użytkowników sklepu
@@ -102,6 +103,31 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
         ?>                           
         </div>
         </div>
+    </div>
+        <div class="col-md-12">
+        <div class="jumbotron">  
+        <div class="container-fluid">
+           <legend>Users basket:</legend>
+            <?php
+            if ($adminSession == true) {
+                             
+                $allUsers = User::loadAllUsers($connect);    
+
+                foreach($allUsers as $user){
+                    
+                    if($user->getId() != $adminSession){
+                    
+                    $idUsera = $user->getId();
+        
+                    echo('<br><form action="basket.php" method="post">
+                         <button type="submit" class="btn btn-primary" name="idUsera" 
+                         value="' . $idUsera . '">' . $user->getName() . '</button></form>');
+                    }
+                }
+            }
+            ?>
+        </div>
+        </div> 
     </div>
 </body>
 </html>
