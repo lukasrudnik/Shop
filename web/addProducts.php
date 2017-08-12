@@ -147,14 +147,22 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
         <div class="container-fluid">
            <legend>Product list:</legend>
             <?php
-            if ($adminSession == true) {
+            if($adminSession == true){
                 
-//                $sql = "SELECT * FROM Products";
-//                $query = $connect->query($sql);
+                $allProducts = Product::loadAllProducts($connect);  
                 
-                echo "'Tu będzie się wyświetlała lista produktów w sklepie'";
+                foreach($allProducts as $product){
+                    
+                    echo ('<b>id: </b>' . $product->getId() . '  -  ' . 
+                         '<b>name: </b>' . $product->getName() . '  -  ' . 
+                         '<b>price: </b>' . $product->getPrice() . '  -  ' . 
+                         '<b>amount: </b>' . $product->getAmount() . '  -  ' . 
+                         '<b>descroption: </b>' . $product->getDescription() . '  -  ' .
+                         '<b>stock: </b>' . $product->getIn_stock() . '  -  ' .
+                         '<b>category id: </b>' . $product->getCategory_id() . "<br>");
+                }
             }
-        ?>
+            ?>
         </div>
         </div> 
     </div>

@@ -216,8 +216,9 @@ class Product
     // ładowanie wszydtkich prodóktów 
     public static function loadAllProducts(mysqli $connection) {
 
-        $sql = "SELECT * FROM Products JOIN Categories ON Products.category_id = Categories.category_id           JOIN Images ON Products.product_id = Images.product_id 
-                WHERE Images.type = 1";
+/*        $sql = "SELECT * FROM Products JOIN Categories ON Products.category_id = Categories.category_id           JOIN Images ON Products.product_id = Images.product_id WHERE Images.type = 1"; */  
+        
+        $sql = "SELECT * FROM Products";
 
         $result       = $connection -> query($sql);
         $productTable = [];
@@ -230,12 +231,12 @@ class Product
                 $product -> name        = $row['name'];
                 $product -> price       = $row['price'];
                 $product -> amount      = $row['amount'];
-                $product -> description = $row['description'];
+                $product -> description = $row['descritpion'];
                 $product -> in_stock     = $row['in_stock'];
                 $product -> category_id  = $row['category_id'];
 
-                $product -> path          = $row['path']; // tabela Images
-                $product -> category_name = $row['category_name']; // tabela Categories
+//                $product -> path          = $row['path']; // tabela Images
+//                $product -> category_name = $row['category_name']; // tabela Categories
 
                 $productTable[] = $product;
             }

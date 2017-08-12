@@ -32,7 +32,7 @@ $admin = Admin::loadByAdminId($connect, $adminSession);
                     ?> <!-- powitanie zalogowanego admina -->
                 </a>
                 <a class="navbar-brand" href="index.php">Run to main page</a>
-                <a class="navbar-brand" href="addProducts.php">Add new products</a>
+                <a class="navbar-brand" href="addProducts.php">Products</a>
             </div>
             <div class="container-fluid">
                 <ul class="nav navbar-nav navbar-right">
